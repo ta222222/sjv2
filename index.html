@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sj site v2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 960px;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        #player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            border-radius: 3px;
+            box-shadow: 0 10px 25px #000000
+        }
+
+
+        @media (max-width: 768px) {
+            .video-wrapper {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-wrapper {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-wrapper">
+        <div id="player"></div>
+
+
+        <script>
+            // Load the IFrame Player API code asynchronously
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            let player;
+
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                    height: '100%',
+                    width: '100%',
+                    videoId: '-R38JqMHK8A', // video ID
+                    playerVars: {
+                        'autoplay': 0,
+                        'controls': 0,
+                        'modestbranding': 1,
+                        'rel': 0,
+                        'showinfo': 0,
+                        'disablekb': 1, // Disable keyboard controls
+                        'iv_load_policy': 3
+                    }
+                });
+            }
+        </script>
+</body>
+</html>
